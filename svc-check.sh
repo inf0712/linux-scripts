@@ -1,19 +1,12 @@
 #!/bin/bash
 
-echo "========== DOCKER-CHECK =========="
+echo "========== SERVICE-CHECK =========="
 
-if systemctl is-active --quiet docker 
+read -p "Enter the Service you want to check: " service
+
+if systemctl is-active --quiet "$service"; 
 then
-	echo "Docker is running"
+	echo "Service is running"
 else
-	echo "Warning! Docker is not Running"
-fi
-
-echo "========== SSH-CHECK =========="
-
-if systemctl is-active --quiet ssh;
-then
-	echo "SSH is running"
-else
-	echo "SSH is currently not Running"
+	echo "Warning! Service is not Running"
 fi
